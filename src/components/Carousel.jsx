@@ -25,17 +25,17 @@ const Carousel = () => {
   };
   return (
     <div className="carousel-container">
-    <Slider {...settings}>
-<div>
-        <img className='AnImage' src={entreeSrc} alt="Entree" />
-      </div>
-      <div>
-       <img className='AnImage' src={JeuxVideoRetroSrc} alt="JeuxRetro" />
-      </div>
-      <div>
-        <img className='AnImage' src={PhotoSrc} alt="Photo" />
-      </div>
-    </Slider>
+      <Slider {...settings}>
+        <div>
+          <img className='AnImage' src={entreeSrc} alt="Entree" />
+        </div>
+        <div>
+          <img className='AnImage' src={JeuxVideoRetroSrc} alt="JeuxRetro" />
+        </div>
+        <div>
+          <img className='AnImage' src={PhotoSrc} alt="Photo" />
+        </div>
+      </Slider>
     </div>
   );
 };

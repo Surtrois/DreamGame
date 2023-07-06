@@ -5,8 +5,10 @@ import "./css/logo.css"
 export default function Banner() {
   const banniereSrc = banniere
   return (
-    <a href='/home'>
-    <img className='banner' src={banniereSrc} alt="Banniere" />
-    </a>
+    <div className="header">
+      <a href='/home'>
+        <img className='banner' src={banniereSrc} alt="Banniere" />
+      </a>
+    </div>
   )
 }
