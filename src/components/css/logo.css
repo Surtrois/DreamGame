@@ -1,0 +1,8 @@
+.banner{
+    position: absolute;
+    text-align: center;
+    z-index: 999;
+    display: block;
+    margin-left: 32.5%;
+    
+}
