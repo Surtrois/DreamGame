@@ -11,7 +11,7 @@
 }
 
 .carousel-item {
-  width: 800px;
+  width: 400px;
   height: 400px; 
   display: flex;
   justify-content: center;
@@ -29,6 +29,7 @@
 }
 
 .slick-slider img{
-  width: 65%;
+  width: 50%;
   margin: 0 auto;
 }
+

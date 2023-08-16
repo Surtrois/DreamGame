@@ -4,6 +4,8 @@ import Home from "./components/Home.jsx";
 import Banner from "./components/Logo.jsx";
 import Navigation from "./components/Navigation.jsx";
 import Carousel from "./components/Carousel.jsx";
+import Footer from "./components/Footer.jsx";
+
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
       <Carousel />
       <Navigation />
       <Router></Router>
+      <Footer></Footer>
     </div> 
   );
 }

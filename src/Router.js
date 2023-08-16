@@ -8,6 +8,7 @@ import JeuxVideo from './components/JeuxVideo';
 import Manga from './components/Manga';
 import Figurines from './components/Figurines';
 import Carousel from './components/Carousel';
+import Footer from './components/Footer';
 
 function Router() {
   return (
@@ -18,7 +19,7 @@ function Router() {
         <Route path="*" element={<Home />} />
         <Route path="/Jeuxvideo" element={<JeuxVideo/>}/>
         <Route path="/Manga" element={<Manga/>}/>
-        <Route path="/Figurine" element={<Figurines/>}/>
+        <Route path="/Figurines" element={<Figurines/>}/>
         </Routes>
         </div>
   )
