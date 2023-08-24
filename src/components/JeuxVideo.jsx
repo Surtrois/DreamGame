@@ -25,15 +25,14 @@ const retroSrc1 = retro1
 const retroSrc2 = retro2
 const retroSrc3 = retro3
 
-
 export default function JeuxVideo() {
   return (
     <div>
-    <p className='text-container'>Notre specialité est l'achat et la revente de jeux videos. Nous essayons de
-      toujours vous offrir le meilleur prix, tout en faisant notre possible pour
-      avoir les prix a la revent les plus bas possible.
-      Nous avons de nombreux produits retro,consoles,accessoires et jeux video.
-      Switch,Playstation 5,Playstation 4,Super nitendo, gamecube... la liste est longue !
+    <p className='text-container'> C'est avec les jeux vidéo que l'aventure DreamGames a commencé à Billy-Montigny. 
+      Du rétrogaming aux dernières sorties sur les consoles next gen, nous faisons notre maximum pour vous proposer un large choix
+      vidéoludique au meilleur prix ! 
+      Petit plus DreamGames : toute console achetée dans notre magasin sera sous 
+      garantie pendant un mois. 
       </p>
 <div className='gallery'>
 <img className='image-container' src={jeuxvideoSrc} alt="Jeuxvideo" />

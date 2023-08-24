@@ -33,8 +33,8 @@ const Footer = () => {
         </div>
   <div>
     <p>
-        Site crée par Surtrois ©
-        Tout droit reservé
+        Site conçu par Surtrois ©
+        Tout droits reservés
     </p>
   </div>
         {isPopupVisible && (

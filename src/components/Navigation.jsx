@@ -33,13 +33,18 @@ const Navigation = () => {
           </a>
         </li>
         <li className="navigation-item">
-          <a href="/Figurines" className="navigation-link">
-            Figurines
+          <a href="/ProduitsDerivés" className="navigation-link">
+            Produits Derivés
           </a>
         </li>
         <li className="navigation-item">
           <a href="/About" className="navigation-link">
             A propos
+          </a>
+        </li>
+        <li className="navigation-item">
+          <a href="/News" className="navigation-link">
+            News
           </a>
         </li>
       </ul>
