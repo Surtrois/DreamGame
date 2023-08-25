@@ -132,7 +132,7 @@ class ApiHandler {
     // categorie methods
     categorie = {
         GetAll: async () => {
-            return await this.#GET_REQUEST("/categorie")
+            return await this.#GET_REQUEST("/categorie/")
         },
         GetById: async (data) => {
             return await this.#POST_REQUEST("/categorie/find", data, this.accessToken)

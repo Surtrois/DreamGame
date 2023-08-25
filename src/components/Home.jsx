@@ -1,6 +1,5 @@
 import React from 'react'
 import "./css/home.css"
-import Carousel from './Carousel'
 
 export default function Home() {
   return (
@@ -9,7 +8,6 @@ export default function Home() {
       à Billy-Montigny. Nous sommes spécialisés dans la vente et la reprise de <a href='/JeuxVideo' target='_blank'>Jeux Video</a> neufs et d'occasions.
       Nous vous proposons également des  <a href='/Manga' target='_blank'>Manga</a> et <a href='/ProduitsDerivés' target='_blank'>Figurines</a> neufs ou d'occasions.
       Vous n'êtes pas de la région ? Retrouvez nous sur <a href='https://www.ebay.fr/str/dreamgamesbillymontigny' target='_blank'>Ebay.</a> </p>
-      <Carousel />
     </div>
   )
 }

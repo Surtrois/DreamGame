@@ -71,72 +71,12 @@ exports.GetProfile = async (req, res) => {
             });
         }
 
-        // Rôles 
-        const roles = await UserRole.findAll({ where: { userId: user.id } });
-        const rolesDetails = await Role.findAll();
-        const userRoles = [];
-        roles.forEach((role) => {
-            rolesDetails.forEach((role2) => {
-                if (role2.id === role.roleId) {
-                    const userRoleData = {
-                        name: role2.name,
-                        label: role2.label
-                    }
-                    userRoles.push(userRoleData);
-                }
-            })
-        });
-
-        console.log(userRoles);
-        // Instruments
-        const instruments = await UserInstrument.findAll({ where: { userId: user.id } });
-
-        const instrumentsDetails = await Instrument.findAll();
-        const userInstruments = [];
-        instruments.forEach((instrument) => {
-            instrumentsDetails.forEach((instrument2) => {
-                if (instrument2.id === instrument.instrumentId) {
-                    const instrumentData = {
-                        id: instrument2.id,
-                        name: instrument2.name,
-                        label: instrument2.label,
-                    }
-                    userInstruments.push(instrumentData);
-                }
-            })
-        });
-        // Status
-        const status = await UserStatus.findAll({ where: { userId: user.id } });
-
-        const statusDetails = await Status.findAll();
-        const userStatus = [];
-        status.forEach((data) => {
-            statusDetails.forEach((status2) => {
-                if (status2.id === data.statusId) {
-                    const statusData = {
-                        name: status2.name,
-                        label: status2.label,
-                        type: status2.type
-                    }
-                    userStatus.push(statusData);
-                }
-            })
-        });
-
         return res.status(200).json({
             error: false,
             data:
             {
                 id: user.id,
-                firstName: user.firstName,
-                lastName: user.lastName,
                 email: user.email,
-                phone: user.phone,
-                deletionDate: user.deletionDate,
-                notification: user.notification,
-                userInstruments,
-                userStatus,
-                userRoles
             }
         })
     } catch (error) {

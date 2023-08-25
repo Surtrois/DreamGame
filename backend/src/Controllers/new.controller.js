@@ -3,11 +3,36 @@ const New = require("../models/new.model");
 exports.Create = async (req, res) => {
     try {
 
-    } catch (error){
-        console.log("error", error);
-        const errorMessage = error?.message;
+        const { title, content } = req.body;
+
+        const { id: categorieId } = req.decoded;
+
+        const thumbnail = req.file.filename;
+
+        if (!title || !thumbnail || !content || !categorieId) {
+            return res.status(400).json({
+                error: true,
+                message: "Requête invalide."
+            });
+        }
+
+        await new New({
+            title: title,
+            thumbnail: thumbnail,
+            content: content,
+            categorieId: categorieId
+        }).save();
+
+        return res.status(201).json({
+            error: false,
+            message: "L'actualité a bien été créée."
+        });
+
+    } catch (error) {
+        console.log(error);
+        console.log("ok1")
         return res.status(500).json({
-            error: errorMessage,
+            error: true,
             message: "Une erreur interne est survenue, veuillez réessayer plus tard."
         })
     }
@@ -15,8 +40,8 @@ exports.Create = async (req, res) => {
 
 exports.GetAll = async (req, res) => {
     try {
- 
-    } catch (error){
+
+    } catch (error) {
         console.log("error");
         return res.status(500).json({
             error: true,
@@ -27,8 +52,8 @@ exports.GetAll = async (req, res) => {
 
 exports.GetById = async (req, res) => {
     try {
- 
-    } catch (error){
+
+    } catch (error) {
         console.log("error");
         return res.status(500).json({
             error: true,
@@ -39,8 +64,8 @@ exports.GetById = async (req, res) => {
 
 exports.Update = async (req, res) => {
     try {
-       
-    } catch (error){
+
+    } catch (error) {
         console.log("error");
         return res.status(500).json({
             error: true,
@@ -51,9 +76,9 @@ exports.Update = async (req, res) => {
 
 exports.Delete = async (req, res) => {
     try {
-        
-        
-    } catch (error){
+
+
+    } catch (error) {
         console.log("error");
         return res.status(500).json({
             error: true,

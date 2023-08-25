@@ -4,6 +4,7 @@ import Home from "./components/Home.jsx";
 import Banner from "./components/Logo.jsx";
 import Navigation from "./components/Navigation.jsx";
 import Carousel from "./components/Carousel.jsx";
+import Footer from "./components/Footer.jsx";
 
 export function App() {
   return (
@@ -11,7 +12,8 @@ export function App() {
       <Banner />
       <Carousel />
       <Navigation />
-      <Router></Router>
+      <Router />
+      <Footer />
     </div> 
   );
 }

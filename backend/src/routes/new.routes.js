@@ -1,12 +1,13 @@
 const express = require ('express')
 const router =  express.Router()
-const categorieController = require('../Controllers/new.controller')
+const newController = require('../Controllers/new.controller')
+const upload = require('../utils/multer.utils')
 const { authenticateUser } = require('../middleware/authenticate.middleware')
 
-router.post("/create",[authenticateUser], categorieController.Create)
-router.get("/", categorieController.GetAll)
-router.get("/find", categorieController.GetById)
-router.patch("/update",[authenticateUser], categorieController.Update)
-router.delete("/delete",[authenticateUser], categorieController.Delete)
+router.post("/create",[authenticateUser,  upload.single('thumbnail')], newController.Create)
+router.get("/", newController.GetAll)
+router.get("/find", newController.GetById)
+router.patch("/update",[authenticateUser], newController.Update)
+router.delete("/delete",[authenticateUser], newController.Delete)
 
 module.exports = router;

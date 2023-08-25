@@ -8,6 +8,8 @@ const sequelize = require('./config/database.config')
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use('/images', express.static('public/images'));
+
 
 app.use('/categorie', require('./src/routes/categorie.routes'))
 app.use('/user', require('./src/routes/user.routes'))

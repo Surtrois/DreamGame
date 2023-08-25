@@ -19,14 +19,29 @@ import ApiHandler from './service/apihandler';
 export const useApi = new ApiHandler(localStorage.getItem('accessToken') || null);
 
 function Router() {
+
   const [isLogged, setIsLogged] = useState(Boolean(localStorage.getItem('accessToken')) || false);
+
+  const logout = (reason) => {
+    if (reason === "logout") {
+      console.log('info', 'Vous êtes désormais déconnecté.')
+    } else {
+      console.log('error', 'Votre session a expirée, veuillez vous reconnecter.')
+    }
+    setIsLogged(false)
+    return localStorage.removeItem('accessToken')
+  }
+
+  console.log(isLogged)
+
   const fetchProfile = async () => {
     const response = await useApi.user.GetProfile()
-    
     if (response && !response.error) {
       setIsLogged(true)
       return true
-
+    } else if (response && response.error) {
+      logout()
+      return false
     }
   }
 
@@ -34,7 +49,11 @@ function Router() {
     if (isLogged) {
       fetchProfile();
     }
-  }, [])
+  }, [isLogged])
+
+
+  console.log(isLogged)
+  
   return (
     <div>
       <Routes>
@@ -48,7 +67,7 @@ function Router() {
         <Route path="/News" element={<News />} />
         <Route path="/AdminPage" element={<AdminPage fetchProfile={fetchProfile} />} />
         {isLogged ?
-          <Route path="/AdminArticles" element={<ArticleManagement />} />
+          <Route path="/AdminArticles" element={<ArticleManagement  logout={logout} />} />
           :
           null
         }

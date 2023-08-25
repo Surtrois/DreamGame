@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApi } from '../Router';
 
@@ -9,13 +9,14 @@ const LoginForm = (props, { onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const [incorrectCredentials, setIncorrectCredentials] = useState(false);
 
   const verification = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const userData = {
       email,
       password
-    }
+    };
 
     setError([]);
     const newError = [];
@@ -31,36 +32,31 @@ const LoginForm = (props, { onLogin }) => {
 
     setError(newError);
 
-
     if (newError.length > 0) {
       return;
     }
 
     const response = await useApi.user.SignIn(userData);
 
-    console.log(response)
 
     if (response && response.token) {
 
       localStorage.setItem("accessToken", response.token);
       useApi.updateAccessToken(response.token);
-      const profileResponse = await props.fetchProfile();
+
+      const profileResponse = await fetchProfile();
 
       if (profileResponse) {
         navigate("/AdminArticles");
-
         setEmail("");
         setPassword("");
       }
-
     } else {
-      if (response.archived) {
-        navigate("/AdminPage");
-      } else {
-        console.log('error', 'E-mail ou mot de passe incorrect');
-      }
+      setIncorrectCredentials(true);
     }
   }
+
+
 
   return (
     <form method='post' onSubmit={(event) => verification(event)}>
@@ -70,28 +66,24 @@ const LoginForm = (props, { onLogin }) => {
             type="Email"
             name='Email'
             placeholder="Email"
-            id='emailinput'
+            id='emailInput'
             value={email}
             onChange={(event) => setEmail(event.currentTarget.value)}
           />
-          {
-            error.includes("email") && <label htmlFor='emailinput'> C'est pas le bon mail</label>
-          }
+          {error.includes('email') && <label htmlFor='emailInput'>Veuillez renseigner un e-mail valide</label>}
         </div>
         <div>
           <input
             type="password"
             placeholder="Password"
             name='Password'
-            id='Passwordinput'
+            id='passwordInput'
             value={password}
             onChange={(event) => setPassword(event.currentTarget.value)}
           />
-          {
-            error.includes("Password") && <label htmlFor='Passwordinput'> C'est pas le bon mot de passe</label>
-
-          }
+          {error.includes('password') && <label htmlFor='passwordInput'>Veuillez renseigner un mot de passe</label>}
         </div>
+        {incorrectCredentials && <p>Email ou mot de passe incorrect</p>}
         <button type="submit">Login</button>
       </fieldset>
     </form>

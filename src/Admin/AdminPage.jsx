@@ -2,33 +2,18 @@ import React, { useState } from 'react';
 import LoginForm from './LoginForm'; // Créez ce composant pour le formulaire de connexion
 import ArticleManagement from './ArticleManagement'; // Créez ce composant pour le formulaire de création d'articles
 
-const AdminPage = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = () => {
-    
-    setIsLoggedIn(true);
-  };
+const AdminPage = (props) => {
+  const { fetchProfile } = props
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
 
   return (
     <div>
-      {isLoggedIn ? (
-        <div>
-          <h1>Admin Dashboard</h1>
-          <ArticleManagement />
-        </div>
-      ) : (
-        <div>
-          <h1>Login</h1>
-          <LoginForm onLogin={handleLogin} />
-        </div>
-      )}
+      <h1>Admin Dashboard</h1>
+      <LoginForm fetchProfile={fetchProfile} />
     </div>
-  );
-};
+  )
+}
+
 
 export default AdminPage;
