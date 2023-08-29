@@ -30,7 +30,6 @@ exports.Create = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        console.log("ok1")
         return res.status(500).json({
             error: true,
             message: "Une erreur interne est survenue, veuillez réessayer plus tard."
@@ -40,7 +39,13 @@ exports.Create = async (req, res) => {
 
 exports.GetAll = async (req, res) => {
     try {
+        const news = await New.findAll();
 
+        return res.status(200).json({
+            error: false,
+            message: "Les actualités ont bien été récupérés",
+            data: news
+        })
     } catch (error) {
         console.log("error");
         return res.status(500).json({

@@ -148,7 +148,7 @@ class ApiHandler {
             return await this.#PATCH_REQUEST("/new/update", data, this.accessToken, { multipart: data.thumbnail ? true : false })
         },
         GetAll: async () => {
-            return await this.#GET_REQUEST("/new")
+            return await this.#GET_REQUEST("/new/")
         },
         GetById: async (data) => {
             return await this.#POST_REQUEST("/new/find", data)
