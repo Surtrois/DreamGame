@@ -57,7 +57,30 @@ exports.GetAll = async (req, res) => {
 
 exports.GetById = async (req, res) => {
     try {
+        const { id } = req.body;
 
+        if (!id || isNaN(id)) {
+            return res.status(400).json({
+                error: true,
+                message: "Requête invalide."
+            });
+        }
+
+        const news = await New.findOne({ where: { id: id } });
+
+        if (!news) {
+            return res.status(404).json({
+                error: true,
+                message: "L'actualité est introuvable."
+            });
+        }
+
+        return res.status(200).json({
+            error: false,
+            message: "L'actualité a été récupérée.",
+            data: news
+        });
+        
     } catch (error) {
         console.log("error");
         return res.status(500).json({

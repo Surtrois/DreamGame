@@ -30,6 +30,16 @@ const ArticleManagement = (props) => {
   }, []);
 
 
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  const openPopup = () => {
+    setIsPopupVisible(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupVisible(false);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError([]);
@@ -53,8 +63,11 @@ const ArticleManagement = (props) => {
 
     } else {
       const response = await useApi.new.Create({ title: title, content: content, thumbnail: thumbnail, categorieId: categorieId })
-
-      console.log(response)
+      setTitle("")
+      setThumbnail(null)
+      setContent("");
+      setCategorieId(null)
+      setIsPopupVisible(true)
     }
   };
 
@@ -73,10 +86,7 @@ const ArticleManagement = (props) => {
     logout("logout");
   }
 
-  console.log(title)
-  console.log(thumbnail)
-  console.log(content)
-  console.log(categorieId)
+
 
   return (
     <div>
@@ -138,7 +148,22 @@ const ArticleManagement = (props) => {
           <NavLink to={'/'} onClick={() => { disconnectedClick(); }}>
             Déconnexion
           </NavLink>
+
+
+
+
+          {isPopupVisible && (
+            <div className="popup-overlay">
+              <div className="popup-content">
+                <p>News ajoutée avec succès </p>
+                <button onClick={closePopup}>Fermer</button>
+              </div>
+            </div>
+          )}
         </div>
+
+
+
       }
     </div>
   );

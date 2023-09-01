@@ -16,9 +16,12 @@ import News from './components/News';
 import AdminPage from './Admin/AdminPage';
 import LoginForm from './Admin/LoginForm';
 import ApiHandler from './service/apihandler';
+import Banner from './components/Logo';
+import NewsDetails from './components/NewsDetails';
+
 export const useApi = new ApiHandler(localStorage.getItem('accessToken') || null);
 
-function Router() {
+function RouterContainer() {
 
   const [isLogged, setIsLogged] = useState(Boolean(localStorage.getItem('accessToken')) || false);
 
@@ -53,27 +56,36 @@ function Router() {
 
 
   console.log(isLogged)
-  
+
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/About" element={<About />} />
-        <Route path="*" element={<Home />} />
-        <Route path="/Jeuxvideo" element={<JeuxVideo />} />
-        <Route path="/Manga" element={<Manga />} />
-        <Route path="/ProduitsDerivés" element={<ProduitsDerivés />} />
-        <Route path="/Surtrois" element={<Surtrois />} />
-        <Route path="/News" element={<News />} />
-        <Route path="/AdminPage" element={<AdminPage fetchProfile={fetchProfile} />} />
-        {isLogged ?
-          <Route path="/AdminArticles" element={<ArticleManagement  logout={logout} />} />
-          :
-          null
-        }
-      </Routes>
-    </div>
+    <BrowserRouter>
+        <Banner />
+        <Carousel />
+        <Navigation />
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/About" element={<About />} />
+          <Route path="*" element={<Home />} />
+          <Route path="/Jeuxvideo" element={<JeuxVideo />} />
+          <Route path="/Manga" element={<Manga />} />
+          <Route path="/ProduitsDerivés" element={<ProduitsDerivés />} />
+          <Route path="/Surtrois" element={<Surtrois />} />
+          <Route path='News'>
+            <Route index element={<News />} />
+            <Route path=':id' element={<NewsDetails />} />
+          </Route>
+          <Route path="/AdminPage" element={<AdminPage fetchProfile={fetchProfile} />} />
+          {isLogged ?
+            <Route path="/AdminArticles" element={<ArticleManagement logout={logout} />} />
+            :
+            null
+          }
+        </Routes>
+        
+      <Footer />
+    </BrowserRouter>
   )
 }
 
-export default Router
+export default RouterContainer
