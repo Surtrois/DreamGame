@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import LoginForm from './LoginForm'; // Créez ce composant pour le formulaire de connexion
-import ArticleManagement from './ArticleManagement'; // Créez ce composant pour le formulaire de création d'articles
+import LoginForm from './LoginForm'; 
+import ArticleManagement from './ArticleManagement'; 
 
 
 const AdminPage = (props) => {

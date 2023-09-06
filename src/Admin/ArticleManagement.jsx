@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import { useApi } from "../Router";
+import "../components/css/ArticleManagement.css"
 
 const ArticleManagement = (props) => {
 
@@ -94,9 +95,9 @@ const ArticleManagement = (props) => {
       {noData ? <p>Aucune actualité à afficher</p> : !categories || categories.length <= 0 ? <p>chargement</p> :
 
         <div>
-          <h2>Ajouter un nouvel article</h2>
+          <h2 className="Title">Ajouter un nouvel article</h2>
           <form onSubmit={(event => handleSubmit(event))}>
-            <div>
+            <div className="Box">
               <label>Titre de l'article:</label>
               <input
                 type="text"
@@ -106,7 +107,7 @@ const ArticleManagement = (props) => {
               />
               {error.includes('title') ? <label htmlFor="title">Le titre doit contenir 3 caractères minimum</label> : null}
             </div>
-            <div>
+            <div className="Box2">
               <label>Contenu de l'article:</label>
               <textarea
                 value={content}
@@ -142,7 +143,7 @@ const ArticleManagement = (props) => {
 
             </div>
 
-            <button type="submit">Ajouter l'article</button>
+            <button className="Button" type="submit">Ajouter l'article</button>
           </form>
 
           <NavLink to={'/'} onClick={() => { disconnectedClick(); }}>

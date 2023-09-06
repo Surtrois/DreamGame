@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useApi } from '../Router';
-import "./css/dc.css"
+import "./css/NewsDetails.css"
 
 export default function NewsDetails() {
     const [newsDetails, setNewsDetails] = useState({});
     const { id } = useParams();
     const navigate = useNavigate();
     const apiUrl = useApi.baseUrl;
-
-
 
     const fetchNew = async () => {
         try {
@@ -32,11 +30,11 @@ export default function NewsDetails() {
                 <i className="fa-solid fa-circle-up fa-rotate-270"></i>
             </Link>
             <div className='pagePattern__content'>
-                {newsDetails.length <= 0 || !newsDetails.content || !newsDetails.createdAt ? <p>Chargement</p> :
+            {newsDetails.length <= 0 || !newsDetails.content || !newsDetails.createdAt ? <p>Chargement</p> :
                     <>
-                        <h2>{newsDetails.title}</h2>
-                        <img className='cardsImages' src={`${apiUrl}/images/${newsDetails.thumbnail}`} alt={newsDetails.title} />
-                        {newsDetails.content}
+                        <h2 className='Title'>{newsDetails.title}</h2>
+                        <img className='Image' src={`${apiUrl}/images/${newsDetails.thumbnail}`} alt={newsDetails.title} />
+                        <p className='Article'>{newsDetails.content}</p>
                     </>
                 }
             </div>

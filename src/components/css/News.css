@@ -1,3 +1,30 @@
+
+@media screen and (max-width: 768px) {
+  #category h2 {
+    font-size: 28px;
+  }
+  
+  .cardsContainer > div {
+    width: calc(50% - 20px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #category h2 {
+    font-size: 24px;
+  }
+  
+  .cardsContainer > div {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
 .news-article {
     padding: 20px;
     box-sizing: border-box;

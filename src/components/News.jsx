@@ -54,7 +54,7 @@ export default function News() {
                         <div className='pagination'>
                             <Sweetpagination
                                 currentPageData={setCurrentPageData}
-                                dataPerPage={9}
+                                dataPerPage={6}
                                 getData={allNews || []}
                                 navigation={true}
                                 getStyle={'pagination-style'}
